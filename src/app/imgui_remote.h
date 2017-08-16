@@ -195,7 +195,7 @@ struct WebSocketServer : public IWebSocketServer
 				else if (strstr((char *)data, "ImClipboard="))
 				{
 					char *clipboard = &((char *)data)[strlen("ImClipboard=")];
-					ImGui::GetIO().SetClipboardTextFn(clipboard);
+					ImGui::GetIO().SetClipboardTextFn(nullptr ,clipboard);
 				}
 				break;
 			// Binary message

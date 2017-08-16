@@ -11,7 +11,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <ctype.h>
 
 #ifdef _WIN32
 #include <winsock2.h>
@@ -21,7 +20,6 @@
 #include <unistd.h>
 #endif
 #include "../imgui/imgui.h"
-#include <stdio.h>
 
 // @RemoteImgui begin
 #include "../imgui_remote.h"
@@ -115,12 +113,12 @@ static void ImImpl_RenderDrawLists(ImDrawData* draw_data)
 }
 
 // NB: ImGui already provide OS clipboard support for Windows so this isn't needed if you are using Windows only.
-static const char* ImImpl_GetClipboardTextFn()
+static const char* ImImpl_GetClipboardTextFn(void* user_data)
 {
     return glfwGetClipboardString(window);
 }
 
-static void ImImpl_SetClipboardTextFn(const char* text)
+static void ImImpl_SetClipboardTextFn(void* user_data, const char* text)
 {
     glfwSetClipboardString(window, text);
 }
